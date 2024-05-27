@@ -18,15 +18,26 @@ public class Mod5 {
         System.out.println("Or type \"Year\" to see the each month's average temp.");
         System.out.println("If you would like to exit type \"Quit\"");
 
+
         while (true) {
 
             String userInput = scnr.nextLine();
+            int avgTemp = ((Arrays.stream(loTemp).sum()  + Arrays.stream(hiTemp).sum()) / 24);
 
-            if(userInput.equalsIgnoreCase("Quit")){
+            if (userInput.equalsIgnoreCase("Quit")) {
                 System.out.println("Thank you! Enjoy your day.");
                 break;
 
-            } else if (!Arrays.asList(month).contains(userInput)) {
+            }
+            else if (userInput.equalsIgnoreCase("year")){
+                for (i = 0; i < month.length; i++){
+                    System.out.println(month[i] + "'s" + " average temperature was " + (hiTemp[i] + loTemp[i]) / 2);
+                }
+                System.out.println("And the average temperature for the year was " + avgTemp + " Degrees");
+
+            }
+
+            else if (!Arrays.asList(month).contains(userInput)) {
                 System.out.println("This is not an valid input");
                 continue;
             }
@@ -35,6 +46,7 @@ public class Mod5 {
                 if (userInput.equalsIgnoreCase(month[i])) {
                     System.out.println(month[i] + "'s" + " average temperature was " + (hiTemp[i] + loTemp[i]) / 2);
                     break;
+
                 }
             }
         }
